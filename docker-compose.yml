@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  migrations:
+    &currency_base
+    build:
+      context: .
+      dockerfile: ./migrate.dockerfile
+
+    environment:
+      db_host: postgres
+      db_port: 5432
+      db_user: postgres
+      db_database: postgres
+      db_password: postgres
+
+    command: aerich upgrade
+
+  bot:
+    <<: *currency_base
+    build:
+      args:
+        dockerfile: ./app.Dockerfile
+
+    command: python bot.py
+
+  redis:
+    image: redis
+    volumes:
+      - ./docker/outline/redis/redis.conf:/redis.conf
+    command: [ "redis-server", "/redis.conf" ]
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 30s
+      retries: 3
+
+  postgres:
+    container_name: postgres
+    image: postgres:15-bullseye
+
+    volumes:
+      - ./docker/outline/postgres:/var/lib/postgresql/data
+
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+      PG_USER: postgres
+

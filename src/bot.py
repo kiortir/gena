@@ -31,13 +31,13 @@ async def process_start_command(message: types.Message):
     await message.reply("Привет! Это мой первый бот на Aiogram.")
 
 
-async def main():
-    await init()
-    my_profile = Profile(age=17, name='Gena', last_name='Chubakov', sex='male', gorod='Moscow', #type: ignore
-                         kogo_ishu='female', telegram_id=32489328947389279, photo='https://yandex.ru') #type: ignore
-    my_profileDB = ProfileDB(**my_profile.dict())
-    await my_profileDB.save()   
-    print(await ProfileDB.all())
+# async def main():
+#     await init()
+#     my_profile = Profile(age=17, name='Gena', last_name='Chubakov', sex='male', gorod='Moscow', #type: ignore
+#                          kogo_ishu='female', telegram_id=32489328947389279, photo='https://yandex.ru') #type: ignore
+#     my_profileDB = ProfileDB(**my_profile.dict())
+#     await my_profileDB.save()   
+#     print(await ProfileDB.all())
 
 if __name__ == '__main__':
     # import asyncio

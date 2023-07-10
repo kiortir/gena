@@ -13,7 +13,7 @@ class Profile(Model):
     kogo_ishu = fields.CharEnumField(Sex) 
     photo = fields.TextField()
 
-    def __str__(self):
+    def __repr__(self):
         return self.name
 
 class Acknowledged(Model):

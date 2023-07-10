@@ -1,7 +1,7 @@
 from tortoise import Tortoise
 
 TORTOISE_ORM = {
-    "connections": {"default": "sqlite://db.sqlite3"},
+    "connections": {"default": "asyncpg://postgres:postgres@localhost:5432/postgres"},
     "apps": {
         "models": {
             "models": ["repository.profile", "aerich.models"],
@@ -20,4 +20,4 @@ async def init():
     #     modules={'models': ['repository.profile', "aerich.models"]}
     # )
     # Generate the schema
-    await Tortoise.generate_schemas()
+    # await Tortoise.generate_schemas()

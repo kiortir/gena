@@ -1,4 +1,26 @@
 [tool.aerich]
-tortoise_orm = "src.db.TORTOISE_ORM"
+tortoise_orm = "db.TORTOISE_ORM"
 location = "./migrations"
-src_folder = "./."
+src_folder = "./src"
+
+[tool.poetry]
+name = "project"
+version = "0.1.0"
+description = ""
+authors = ["kiortir <mpgg2000@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+tortoise-orm = {extras = ["accel", "asyncpg"], version = "^0.19.3"}
+aiogram = "^2.25.1"
+pydantic = "^2.0"
+
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.4.1"
+aerich = "^0.7.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

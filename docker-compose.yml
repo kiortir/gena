@@ -20,6 +20,7 @@ services:
     <<: *currency_base
     build:
       args:
+        context: .
         dockerfile: ./app.Dockerfile
 
     command: python bot.py

@@ -5,8 +5,15 @@ import datetime
 class Sex(str, Enum):
     MALE = 'male'
     FEMALE = 'female'
+    
+class CityEnum(str, Enum):
+    MOSCOW = "Москва"
+    SPB = "СПБ"
+    
+    
 
 class Profile(BaseModel):
+    # telegram_tag: str
     telegram_id: int
     name: str
     last_name: str
@@ -14,5 +21,5 @@ class Profile(BaseModel):
     sex: Sex
     gorod: str
     kogo_ishu: Sex
-    photo: AnyHttpUrl
+    photo: str | None
 

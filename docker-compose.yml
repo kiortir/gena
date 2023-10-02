@@ -28,7 +28,7 @@ services:
   redis:
     image: redis
     volumes:
-      - ./docker/outline/redis/redis.conf:/redis.conf
+      - ./docker/redis/redis.conf:/redis.conf
     command: [ "redis-server", "/redis.conf" ]
     # ports:
     #   - 6379:6379
@@ -44,7 +44,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ./docker/outline/postgres:/var/lib/postgresql/data
+      - ./docker/postgres:/var/lib/postgresql/data
 
     environment:
       POSTGRES_USER: postgres
